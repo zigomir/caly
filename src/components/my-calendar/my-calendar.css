@@ -22,6 +22,7 @@ td.today {
 
 td.other-month {
   visibility: hidden;
+  border: none; /* needed for Firefox */
 }
 
 td:not(.other-month):hover {
