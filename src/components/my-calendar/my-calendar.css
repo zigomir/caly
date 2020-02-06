@@ -26,7 +26,6 @@ td {
   text-align: center;
   width: 27px;
   height: 27px;
-  cursor: pointer;
 }
 
 td.selected {
@@ -50,6 +49,7 @@ td.other-month {
   border: none; /* needed for Firefox */
 }
 
-td:not(.other-month):hover {
+td.day:not(.other-month):hover {
   background-color: gainsboro;
+  cursor: pointer;
 }
