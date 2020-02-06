@@ -1,6 +1,30 @@
 import { Component, Prop, Event, EventEmitter, h } from '@stencil/core'
 import { dayClass, selectedDayToCalendarDay } from '../../utils/utils'
-import { calendarMonth, IDay } from 'cntdys'
+import { calendarMonth, IDay, getPreviousMonth, getNextMonth } from 'cntdys'
+
+const dayNames = (startOfTheWeek: number, locale = 'en-US') => {
+  const days = [...Array(7).keys()].map(d =>
+    new Date(2017, 9, d + 1) // must not use UTC here
+      .toLocaleString(locale, { weekday: 'long' })
+      .slice(0, 2)
+  )
+
+  for (let i = 6; i > 6 - startOfTheWeek; i--) {
+    const day = days.shift()
+    if (day) {
+      days.push(day)
+    }
+  }
+
+  return days
+}
+
+const monthName = (year: number, month: number, locale = 'en-US') =>
+  new Date(year, month - 1).toLocaleString(locale, { month: 'long' }) // must not use UTC here
+
+const chromeBordersFix = (table: HTMLElement) => {
+  table.style.borderSpacing = table.style.borderSpacing === '0px' ? '' : '0px'
+}
 
 @Component({
   tag: 'my-calendar',
@@ -8,11 +32,13 @@ import { calendarMonth, IDay } from 'cntdys'
   shadow: true,
 })
 export class MyCalendar {
-  @Prop() year: number
-  @Prop() month: number
+  @Prop({ mutable: true, reflect: true }) year: number
+  @Prop({ mutable: true, reflect: true }) month: number
   @Prop({ mutable: true, reflect: true }) selected: string // mm-dd-yyyy
 
   @Event({ eventName: 'daySelected' }) daySelected: EventEmitter
+
+  private table: HTMLElement
 
   private handleDayClick(day: IDay) {
     const dayInMonth = day.dayInMonth.toString().padStart(2, '0')
@@ -22,28 +48,62 @@ export class MyCalendar {
     this.daySelected.emit(this.selected) // or day
   }
 
+  private bach() {
+    const { month, year } = getPreviousMonth(this.year, this.month)
+    this.month = month
+    this.year = year
+    chromeBordersFix(this.table)
+  }
+
+  private forward() {
+    const { month, year } = getNextMonth(this.year, this.month)
+    this.month = month
+    this.year = year
+    chromeBordersFix(this.table)
+  }
+
   render() {
     const month = calendarMonth(this.year, this.month)
 
     return (
-      <table>
-        {month.map(week => (
+      <div class="calendar flex">
+        <section>
+          <div onClick={() => this.bach()} class="button">
+            &lt;
+          </div>
+          <div>
+            <span class="month-name">{monthName(this.year, this.month)}</span>
+            &nbsp;
+            <span class="year">{this.year}</span>
+          </div>
+          <div onClick={() => this.forward()} class="button">
+            &gt;
+          </div>
+        </section>
+        <table ref={el => (this.table = el)}>
           <tr>
-            {week.map(day => (
-              <td
-                class={dayClass({
-                  weekDay: day,
-                  month: this.month,
-                  selectedDay: selectedDayToCalendarDay(this.selected),
-                })}
-                onClick={() => this.handleDayClick(day)}
-              >
-                {day.dayInMonth}
-              </td>
+            {dayNames(0).map(dayName => (
+              <td class="borderless day-name">{dayName}</td>
             ))}
           </tr>
-        ))}
-      </table>
+          {month.map(week => (
+            <tr>
+              {week.map(day => (
+                <td
+                  class={dayClass({
+                    weekDay: day,
+                    month: this.month,
+                    selectedDay: selectedDayToCalendarDay(this.selected),
+                  })}
+                  onClick={() => this.handleDayClick(day)}
+                >
+                  {day.dayInMonth}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </table>
+      </div>
     )
   }
 }
