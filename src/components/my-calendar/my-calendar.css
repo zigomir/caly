@@ -22,14 +22,10 @@ table {
 }
 
 td {
-  border: 1px solid black;
+  border: 1px solid #e4e7e7;
   text-align: center;
-  width: 27px;
-  height: 27px;
-}
-
-td.selected {
-  color: red;
+  width: 36px;
+  height: 36px;
 }
 
 td.borderless {
@@ -41,7 +37,13 @@ td.day-name {
 }
 
 td.today {
-  color: green;
+  color: #9e9c9c;
+}
+
+/* has to be after today to override it */
+td.selected {
+  background-color: #00a699;
+  color: white;
 }
 
 td.other-month {
