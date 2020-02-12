@@ -7,11 +7,13 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type     | Default     |
-| ---------- | ---------- | ----------- | -------- | ----------- |
-| `month`    | `month`    |             | `number` | `undefined` |
-| `selected` | `selected` |             | `string` | `undefined` |
-| `year`     | `year`     |             | `number` | `undefined` |
+| Property         | Attribute           | Description | Type     | Default     |
+| ---------------- | ------------------- | ----------- | -------- | ----------- |
+| `locale`         | `locale`            |             | `string` | `'en-US'`   |
+| `month`          | `month`             |             | `number` | `undefined` |
+| `selected`       | `selected`          |             | `string` | `undefined` |
+| `startOfTheWeek` | `start-of-the-week` |             | `number` | `0`         |
+| `year`           | `year`              |             | `number` | `undefined` |
 
 
 ## Events
