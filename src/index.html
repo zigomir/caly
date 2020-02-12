@@ -10,6 +10,26 @@
 
     <script type="module" src="/build/caly.esm.js"></script>
     <script nomodule src="/build/caly.js"></script>
+
+    <style>
+      /* no need to use `:root` here */
+      my-calendar {
+        --font: fantasy;
+
+        --border-color: teal;
+        --border-width: 2px;
+
+        /* --other-month-visibility: visible; */
+        /* --other-month-border: 2px solid red; */
+
+        --selected-bg-color: grey;
+        --hover-bg-color: black;
+        --hover-color: white;
+
+        --cell-width: 40px;
+        --cell-height: 40px;
+      }
+    </style>
   </head>
 
   <body>
