@@ -1,26 +1,11 @@
 import { Component, Prop, Event, EventEmitter, h } from '@stencil/core'
-import { dayClass, selectedDayToCalendarDay } from '../../utils/utils'
+import {
+  dayClass,
+  selectedDayToCalendarDay,
+  dayNames,
+  monthName,
+} from '../../utils/utils'
 import { calendarMonth, IDay, getPreviousMonth, getNextMonth } from 'cntdys'
-
-const dayNames = (startOfTheWeek: number, locale = 'en-US') => {
-  const days = [...Array(7).keys()].map(d =>
-    new Date(2017, 9, d + 1) // must not use UTC here
-      .toLocaleString(locale, { weekday: 'long' })
-      .slice(0, 2)
-  )
-
-  for (let i = 6; i > 6 - startOfTheWeek; i--) {
-    const day = days.shift()
-    if (day) {
-      days.push(day)
-    }
-  }
-
-  return days
-}
-
-const monthName = (year: number, month: number, locale = 'en-US') =>
-  new Date(year, month - 1).toLocaleString(locale, { month: 'long' }) // must not use UTC here
 
 const chromeBordersFix = (table: HTMLElement) => {
   table.style.borderSpacing = table.style.borderSpacing === '0px' ? '' : '0px'
@@ -97,6 +82,7 @@ export class MyCalendar {
                   class={dayClass({
                     weekDay: day,
                     month: this.month,
+                    year: this.year,
                     selectedDay: selectedDayToCalendarDay(this.selected),
                   })}
                   onClick={() => this.handleDayClick(day)}
