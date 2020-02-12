@@ -48,7 +48,7 @@ export class MyCalendar {
     this.daySelected.emit(this.selected) // or day
   }
 
-  private bach() {
+  private back() {
     const { month, year } = getPreviousMonth(this.year, this.month)
     this.month = month
     this.year = year
@@ -68,8 +68,8 @@ export class MyCalendar {
     return (
       <div class="calendar flex">
         <section>
-          <div onClick={() => this.bach()} class="button">
-            &lt;
+          <div onClick={() => this.back()} class="button">
+            <slot name="back">&lt;</slot>
           </div>
           <div>
             <span class="month-name">{monthName(this.year, this.month)}</span>
@@ -77,7 +77,7 @@ export class MyCalendar {
             <span class="year">{this.year}</span>
           </div>
           <div onClick={() => this.forward()} class="button">
-            &gt;
+            <slot name="forward">&gt;</slot>
           </div>
         </section>
         <table ref={el => (this.table = el)}>
