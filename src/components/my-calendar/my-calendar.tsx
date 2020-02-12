@@ -35,6 +35,8 @@ export class MyCalendar {
   @Prop({ mutable: true, reflect: true }) year: number
   @Prop({ mutable: true, reflect: true }) month: number
   @Prop({ mutable: true, reflect: true }) selected: string // mm-dd-yyyy
+  @Prop() locale: string = 'en-US'
+  @Prop() startOfTheWeek: number = 0
 
   @Event({ eventName: 'daySelected' }) daySelected: EventEmitter
 
@@ -63,7 +65,7 @@ export class MyCalendar {
   }
 
   render() {
-    const month = calendarMonth(this.year, this.month)
+    const month = calendarMonth(this.year, this.month, this.startOfTheWeek)
 
     return (
       <div class="calendar flex">
@@ -72,7 +74,9 @@ export class MyCalendar {
             <slot name="back">&lt;</slot>
           </div>
           <div>
-            <span class="month-name">{monthName(this.year, this.month)}</span>
+            <span class="month-name">
+              {monthName(this.year, this.month, this.locale)}
+            </span>
             &nbsp;
             <span class="year">{this.year}</span>
           </div>
@@ -82,7 +86,7 @@ export class MyCalendar {
         </section>
         <table ref={el => (this.table = el)}>
           <tr>
-            {dayNames(0).map(dayName => (
+            {dayNames(this.startOfTheWeek, this.locale).map(dayName => (
               <td class="borderless day-name">{dayName}</td>
             ))}
           </tr>

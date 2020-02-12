@@ -11,8 +11,10 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface MyCalendar {
+    'locale': string;
     'month': number;
     'selected': string;
+    'startOfTheWeek': number;
     'year': number;
   }
 }
@@ -32,9 +34,11 @@ declare global {
 
 declare namespace LocalJSX {
   interface MyCalendar {
+    'locale'?: string;
     'month'?: number;
     'onDaySelected'?: (event: CustomEvent<any>) => void;
     'selected'?: string;
+    'startOfTheWeek'?: number;
     'year'?: number;
   }
 

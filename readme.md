@@ -6,8 +6,11 @@
 
 https://codepen.io/zigomir/pen/LYVpJGa?editors=1010
 
-## todo
+## features
 
 - expose styling through CSS vars
-- expose setting of locale
-- expose setting of start of the week (check if possible to get it from locale)
+- use slots to override buttons
+- locale setting – for day and month names
+- start of the week (check if possible to get it from locale – nah: https://github.com/tc39/ecma402/issues/6)
+
+## todo
