@@ -21,6 +21,8 @@ const chromeBordersFix = (table: HTMLElement) => {
   shadow: true,
 })
 export class MyCalendar {
+  private table: HTMLElement
+
   /** (required) Year (YYY) */
   @Prop({ mutable: true, reflect: true }) year!: number
   /** (required) Month (1-12) */
@@ -34,8 +36,6 @@ export class MyCalendar {
 
   /** (optional) Event to listen for when new day is selected. */
   @Event({ eventName: 'daySelected' }) daySelected: EventEmitter
-
-  private table: HTMLElement
 
   private handleDayClick(day: IDay) {
     const dayInMonth = day.dayInMonth.toString().padStart(2, '0')
@@ -62,7 +62,6 @@ export class MyCalendar {
   render() {
     const month = calendarMonth(this.year, this.month, this.startOfTheWeek)
 
-    // consider changing first div to Host, like in https://stenciljs.com/docs/style-guide
     return (
       <div class="calendar flex">
         <section>
