@@ -11,21 +11,31 @@ const chromeBordersFix = (table: HTMLElement) => {
   table.style.borderSpacing = table.style.borderSpacing === '0px' ? '' : '0px'
 }
 
+/**
+ * @slot back – Slot for the previous month button
+ * @slot forward – Slot for the next month button
+ */
 @Component({
-  tag: 'my-calendar',
+  tag: 'my-calendar', // TODO: better tag (and component!) name
   styleUrl: 'my-calendar.css',
   shadow: true,
 })
 export class MyCalendar {
-  @Prop({ mutable: true, reflect: true }) year: number
-  @Prop({ mutable: true, reflect: true }) month: number
-  @Prop({ mutable: true, reflect: true }) selected: string // mm-dd-yyyy
+  private table: HTMLElement
+
+  /** (required) Year (YYY) */
+  @Prop({ mutable: true, reflect: true }) year!: number
+  /** (required) Month (1-12) */
+  @Prop({ mutable: true, reflect: true }) month!: number
+  /** (optional) Selected day (mm-dd-yyyy) */
+  @Prop({ mutable: true, reflect: true }) selected: string
+  /** (optional) Locale */
   @Prop() locale: string = 'en-US'
+  /** (optional) Start of the week. 0 for Sunday, 1 for Monday, etc. */
   @Prop() startOfTheWeek: number = 0
 
+  /** (optional) Event to listen for when new day is selected. */
   @Event({ eventName: 'daySelected' }) daySelected: EventEmitter
-
-  private table: HTMLElement
 
   private handleDayClick(day: IDay) {
     const dayInMonth = day.dayInMonth.toString().padStart(2, '0')

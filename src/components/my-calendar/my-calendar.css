@@ -1,3 +1,16 @@
+/**
+ * @prop --font: Pass the font family you want the text to be in
+ * @prop --border-width: Width of the calendar cell border
+ * @prop --border-color: Color of the calendar cell border
+ * @prop --cell-width: Width of the calendar cell
+ * @prop --cell-height: Height of the calendar cell
+ * @prop --selected-bg-color: Background color of selected day cell
+ * @prop --other-month-visibility: Hidden by default, can be set to visible
+ * @prop --other-month-border: None by default
+ * @prop --hover-bg-color: Cell background color on hover
+ * @prop --hover-color: Cell text color on hover
+ */
+
 :host {
   font-family: var(--font, -apple-system, BlinkMacSystemFont);
   user-select: none;
