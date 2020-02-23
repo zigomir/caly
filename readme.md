@@ -18,7 +18,10 @@ https://codepen.io/zigomir/pen/LYVpJGa?editors=1010
 
 - Publish package: https://help.github.com/en/actions/language-and-framework-guides/publishing-nodejs-packages
 - add tests: https://stenciljs.com/docs/testing-overview
-  Add `.vscode/launch.json` with config for specs and e2e tests
+  - [x] Add Unit test that uses jest snapshots for component rendering test
+  - [ ] Add `.vscode/launch.json` with config for specs and e2e tests
+  - [ ] Add E2E test: https://stenciljs.com/docs/end-to-end-testing
+
 - learn about https://stenciljs.com/docs/style-guide and follow it
   how to order things etc
 - customizable day names?
