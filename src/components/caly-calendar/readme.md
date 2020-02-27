@@ -52,7 +52,7 @@ Caly, a 6k customizable calendar.
 | `month` _(required)_ | `month`             | (required) Month (1-12)                                        | `number` | `undefined` |
 | `selected`           | `selected`          | (optional) Selected day (dd-mm-yyyy)                           | `string` | `undefined` |
 | `startOfTheWeek`     | `start-of-the-week` | (optional) Start of the week. 0 for Sunday, 1 for Monday, etc. | `number` | `0`         |
-| `year` _(required)_  | `year`              | (required) Year (YYY)                                          | `number` | `undefined` |
+| `year` _(required)_  | `year`              | (required) Year (YYYY)                                         | `number` | `undefined` |
 
 
 ## Events

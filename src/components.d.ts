@@ -28,7 +28,7 @@ export namespace Components {
     */
     'startOfTheWeek': number;
     /**
-    * (required) Year (YYY)
+    * (required) Year (YYYY)
     */
     'year': number;
   }
@@ -70,7 +70,7 @@ declare namespace LocalJSX {
     */
     'startOfTheWeek'?: number;
     /**
-    * (required) Year (YYY)
+    * (required) Year (YYYY)
     */
     'year': number;
   }
