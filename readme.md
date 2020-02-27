@@ -6,13 +6,9 @@
 
 https://codepen.io/zigomir/pen/LYVpJGa?editors=1010
 
-## features
+## docs
 
-- expose styling through CSS vars
-- use slots to override buttons
-- locale setting – for day and month names
-- start of the week (check if possible to get it from locale – nah: https://github.com/tc39/ecma402/issues/6)
-- cleanup and test util.ts
+see [caly-calendar component](./src/components/caly-calendar/readme.md)
 
 ## todo
 

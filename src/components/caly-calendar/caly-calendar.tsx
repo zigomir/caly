@@ -16,11 +16,11 @@ const chromeBordersFix = (table: HTMLElement) => {
  * @slot forward – Slot for the next month button
  */
 @Component({
-  tag: 'my-calendar', // TODO: better tag (and component!) name
-  styleUrl: 'my-calendar.css',
+  tag: 'caly-calendar', // TODO: better tag (and component!) name
+  styleUrl: 'caly-calendar.css',
   shadow: true,
 })
-export class MyCalendar {
+export class CalyCalendar {
   private table: HTMLElement
 
   /** (required) Year (YYY) */

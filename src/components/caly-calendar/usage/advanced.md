@@ -1,5 +1,5 @@
 ```html
-<my-calendar
+<caly-calendar
   year="2020"
   month="1"
   selected="01-01-2020"
@@ -21,5 +21,5 @@
       />
     </svg>
   </div>
-</my-calendar>
+</caly-calendar>
 ```

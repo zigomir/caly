@@ -1,4 +1,4 @@
-# my-calendar
+# caly-calendar
 
 Caly, a 6k customizable calendar.
 
@@ -10,7 +10,7 @@ Caly, a 6k customizable calendar.
 ### Advanced
 
 ```html
-<my-calendar
+<caly-calendar
   year="2020"
   month="1"
   selected="01-01-2020"
@@ -32,14 +32,14 @@ Caly, a 6k customizable calendar.
       />
     </svg>
   </div>
-</my-calendar>
+</caly-calendar>
 ```
 
 
 ### Simple
 
 ```html
-<my-calendar year="2020" month="1"></my-calendar>
+<caly-calendar year="2020" month="1"></caly-calendar>
 ```
 
 
@@ -50,7 +50,7 @@ Caly, a 6k customizable calendar.
 | -------------------- | ------------------- | -------------------------------------------------------------- | -------- | ----------- |
 | `locale`             | `locale`            | (optional) Locale                                              | `string` | `'en-US'`   |
 | `month` _(required)_ | `month`             | (required) Month (1-12)                                        | `number` | `undefined` |
-| `selected`           | `selected`          | (optional) Selected day (mm-dd-yyyy)                           | `string` | `undefined` |
+| `selected`           | `selected`          | (optional) Selected day (dd-mm-yyyy)                           | `string` | `undefined` |
 | `startOfTheWeek`     | `start-of-the-week` | (optional) Start of the week. 0 for Sunday, 1 for Monday, etc. | `number` | `0`         |
 | `year` _(required)_  | `year`              | (required) Year (YYY)                                          | `number` | `undefined` |
 

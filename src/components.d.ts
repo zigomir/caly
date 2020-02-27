@@ -10,7 +10,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface MyCalendar {
+  interface CalyCalendar {
     /**
     * (optional) Locale
     */
@@ -37,18 +37,18 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLMyCalendarElement extends Components.MyCalendar, HTMLStencilElement {}
-  var HTMLMyCalendarElement: {
-    prototype: HTMLMyCalendarElement;
-    new (): HTMLMyCalendarElement;
+  interface HTMLCalyCalendarElement extends Components.CalyCalendar, HTMLStencilElement {}
+  var HTMLCalyCalendarElement: {
+    prototype: HTMLCalyCalendarElement;
+    new (): HTMLCalyCalendarElement;
   };
   interface HTMLElementTagNameMap {
-    'my-calendar': HTMLMyCalendarElement;
+    'caly-calendar': HTMLCalyCalendarElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyCalendar {
+  interface CalyCalendar {
     /**
     * (optional) Locale
     */
@@ -76,7 +76,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
-    'my-calendar': MyCalendar;
+    'caly-calendar': CalyCalendar;
   }
 }
 
@@ -86,7 +86,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'my-calendar': LocalJSX.MyCalendar & JSXBase.HTMLAttributes<HTMLMyCalendarElement>;
+      'caly-calendar': LocalJSX.CalyCalendar & JSXBase.HTMLAttributes<HTMLCalyCalendarElement>;
     }
   }
 }

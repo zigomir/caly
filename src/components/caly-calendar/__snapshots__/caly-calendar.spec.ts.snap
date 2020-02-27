@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render my calendar: render-01-01-2010 1`] = `
-<my-calendar month="1" selected="01-01-2010" year="2010">
+exports[`should render caly-calendar: render-01-01-2010 1`] = `
+<caly-calendar month="1" selected="01-01-2010" year="2010">
   <mock:shadow-root>
     <div class="calendar flex">
       <section>
@@ -189,5 +189,5 @@ exports[`should render my calendar: render-01-01-2010 1`] = `
       </table>
     </div>
   </mock:shadow-root>
-</my-calendar>
+</caly-calendar>
 `;

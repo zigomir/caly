@@ -13,7 +13,7 @@
 
     <style>
       /* no need to use `:root` here */
-      my-calendar {
+      caly-calendar {
         --font: fantasy;
 
         --border-color: teal;
@@ -33,7 +33,7 @@
   </head>
 
   <body>
-    <my-calendar
+    <caly-calendar
       year="2020"
       month="1"
       selected="01-01-2020"
@@ -55,10 +55,10 @@
           />
         </svg>
       </div>
-    </my-calendar>
+    </caly-calendar>
 
     <script>
-      const calendar = document.querySelector('my-calendar')
+      const calendar = document.querySelector('caly-calendar')
       calendar.addEventListener('daySelected', event =>
         console.log(event.detail)
       )
