@@ -16,10 +16,5 @@ https://codepen.io/zigomir/pen/LYVpJGa?editors=1010
 
 ## todo
 
-- Publish package: https://help.github.com/en/actions/language-and-framework-guides/publishing-nodejs-packages
-- add tests: https://stenciljs.com/docs/testing-overview
-  Add `.vscode/launch.json` with config for specs and e2e tests
-- learn about https://stenciljs.com/docs/style-guide and follow it
-  how to order things etc
 - customizable day names?
-- range selection? maybe another component
+- range selection? -> another component

@@ -20,7 +20,7 @@ export namespace Components {
     */
     'month': number;
     /**
-    * (optional) Selected day (mm-dd-yyyy)
+    * (optional) Selected day (dd-mm-yyyy)
     */
     'selected': string;
     /**
@@ -62,7 +62,7 @@ declare namespace LocalJSX {
     */
     'onDaySelected'?: (event: CustomEvent<any>) => void;
     /**
-    * (optional) Selected day (mm-dd-yyyy)
+    * (optional) Selected day (dd-mm-yyyy)
     */
     'selected'?: string;
     /**

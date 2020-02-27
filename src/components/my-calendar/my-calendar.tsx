@@ -27,7 +27,7 @@ export class MyCalendar {
   @Prop({ mutable: true, reflect: true }) year!: number
   /** (required) Month (1-12) */
   @Prop({ mutable: true, reflect: true }) month!: number
-  /** (optional) Selected day (mm-dd-yyyy) */
+  /** (optional) Selected day (dd-mm-yyyy) */
   @Prop({ mutable: true, reflect: true }) selected: string
   /** (optional) Locale */
   @Prop() locale: string = 'en-US'
