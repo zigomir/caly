@@ -1,6 +1,6 @@
 {
   "name": "caly",
-  "version": "0.3.1-next",
+  "version": "0.3.2",
   "description": "Caly is a small calendar!",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
