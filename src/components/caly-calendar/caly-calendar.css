@@ -1,5 +1,7 @@
 /**
  * @prop --grid: Specify grid template areas
+ * @prop --grid-column-gap: Specify grid column gap
+ * @prop --navigation-height: Specify grid column gap
  * @prop --font: Pass the font family you want the text to be in
  * @prop --border-width: Width of the calendar cell border
  * @prop --border-color: Color of the calendar cell border
@@ -21,12 +23,14 @@
   display: inline-grid;
   grid-template-areas: var(--grid,
     "nav nav"
-    "mn mn"
+    "mn  mn"
   );
+  column-gap: var(--grid-column-gap, 12px);
 }
 
 .navigation {
   grid-area: nav;
+  height: var(--navigation-height, 16px);
 }
 
 .inline-flex {

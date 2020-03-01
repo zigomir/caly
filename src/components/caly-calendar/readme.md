@@ -86,8 +86,10 @@ Caly, a 6k customizable calendar.
 | `--cell-width`             | Width of the calendar cell                      |
 | `--font`                   | Pass the font family you want the text to be in |
 | `--grid`                   | Specify grid template areas                     |
+| `--grid-column-gap`        | Specify grid column gap                         |
 | `--hover-bg-color`         | Cell background color on hover                  |
 | `--hover-color`            | Cell text color on hover                        |
+| `--navigation-height`      | Specify grid column gap                         |
 | `--other-month-border`     | None by default                                 |
 | `--other-month-visibility` | Hidden by default, can be set to visible        |
 | `--selected-bg-color`      | Background color of selected day cell           |

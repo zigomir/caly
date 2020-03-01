@@ -19,9 +19,6 @@
         --border-color: teal;
         --border-width: 2px;
 
-        /* --other-month-visibility: visible; */
-        /* --other-month-border: 2px solid red; */
-
         --selected-bg-color: grey;
         --hover-bg-color: black;
         --hover-color: white;
@@ -31,7 +28,12 @@
 
         --grid:
           "nav nav"
-          "mn mn";
+          "mn  mn";
+
+        --grid-column-gap: 15px;
+
+        /* --other-month-visibility: visible; */
+        /* --other-month-border: 2px solid red; */
       }
     </style>
   </head>
@@ -39,11 +41,9 @@
   <body>
     <caly-calendar
       year="2020"
-      month="1"
+      month="2"
       range
       number-of-months="2"
-      locale="sl-SI"
-      start-of-the-week="1"
     >
       <!-- optional slots to change back and forward button style -->
       <div slot="back">
