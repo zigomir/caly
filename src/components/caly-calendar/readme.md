@@ -46,20 +46,26 @@ Caly, a 6k customizable calendar.
 
 ## Properties
 
-| Property             | Attribute           | Description                                                    | Type     | Default     |
-| -------------------- | ------------------- | -------------------------------------------------------------- | -------- | ----------- |
-| `locale`             | `locale`            | (optional) Locale                                              | `string` | `'en-US'`   |
-| `month` _(required)_ | `month`             | (required) Month (1-12)                                        | `number` | `undefined` |
-| `selected`           | `selected`          | (optional) Selected day (dd-mm-yyyy)                           | `string` | `undefined` |
-| `startOfTheWeek`     | `start-of-the-week` | (optional) Start of the week. 0 for Sunday, 1 for Monday, etc. | `number` | `0`         |
-| `year` _(required)_  | `year`              | (required) Year (YYYY)                                         | `number` | `undefined` |
+| Property             | Attribute           | Description                                                    | Type      | Default     |
+| -------------------- | ------------------- | -------------------------------------------------------------- | --------- | ----------- |
+| `locale`             | `locale`            | (optional) Locale                                              | `string`  | `'en-US'`   |
+| `month` _(required)_ | `month`             | (required) Month (1-12)                                        | `number`  | `undefined` |
+| `numberOfMonths`     | `number-of-months`  | (optional) Number of months rendered                           | `number`  | `1`         |
+| `range`              | `range`             | (optional) Range                                               | `boolean` | `false`     |
+| `rangeEnd`           | `range-end`         | (optional) Range end (dd-mm-yyyy)                              | `string`  | `undefined` |
+| `rangeStart`         | `range-start`       | (optional) Range start (dd-mm-yyyy)                            | `string`  | `undefined` |
+| `selected`           | `selected`          | (optional) Selected day (dd-mm-yyyy)                           | `string`  | `undefined` |
+| `startOfTheWeek`     | `start-of-the-week` | (optional) Start of the week. 0 for Sunday, 1 for Monday, etc. | `number`  | `0`         |
+| `year` _(required)_  | `year`              | (required) Year (YYYY)                                         | `number`  | `undefined` |
 
 
 ## Events
 
-| Event         | Description                                              | Type               |
-| ------------- | -------------------------------------------------------- | ------------------ |
-| `daySelected` | (optional) Event to listen for when new day is selected. | `CustomEvent<any>` |
+| Event                | Description                                                      | Type               |
+| -------------------- | ---------------------------------------------------------------- | ------------------ |
+| `daySelected`        | (optional) Event to listen for when new day is selected.         | `CustomEvent<any>` |
+| `rangeEndSelected`   | (optional) Event to listen for when range end day is selected.   | `CustomEvent<any>` |
+| `rangeStartSelected` | (optional) Event to listen for when range start day is selected. | `CustomEvent<any>` |
 
 
 ## Slots
@@ -79,8 +85,11 @@ Caly, a 6k customizable calendar.
 | `--cell-height`            | Height of the calendar cell                     |
 | `--cell-width`             | Width of the calendar cell                      |
 | `--font`                   | Pass the font family you want the text to be in |
+| `--grid`                   | Specify grid template areas                     |
+| `--grid-column-gap`        | Specify grid column gap                         |
 | `--hover-bg-color`         | Cell background color on hover                  |
 | `--hover-color`            | Cell text color on hover                        |
+| `--navigation-height`      | Specify grid column gap                         |
 | `--other-month-border`     | None by default                                 |
 | `--other-month-visibility` | Hidden by default, can be set to visible        |
 | `--selected-bg-color`      | Background color of selected day cell           |

@@ -1,10 +1,11 @@
 # caly
 
-> 6k calendar
+> 7k calendar with range selection 📅
 
 ## usage example on codepen
 
-https://codepen.io/zigomir/pen/LYVpJGa?editors=1010
+- [caly](https://codepen.io/zigomir/pen/LYVpJGa?editors=1000)
+- [caly with range selection](https://codepen.io/zigomir/pen/mdJwXOB?editors=1000)
 
 ## docs
 
@@ -12,5 +13,4 @@ see [caly-calendar component](./src/components/caly-calendar/readme.md)
 
 ## todo
 
-- customizable day names?
-- range selection? -> another component
+- customizable day names

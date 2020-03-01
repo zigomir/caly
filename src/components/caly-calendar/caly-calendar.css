@@ -1,4 +1,7 @@
 /**
+ * @prop --grid: Specify grid template areas
+ * @prop --grid-column-gap: Specify grid column gap
+ * @prop --navigation-height: Specify grid column gap
  * @prop --font: Pass the font family you want the text to be in
  * @prop --border-width: Width of the calendar cell border
  * @prop --border-color: Color of the calendar cell border
@@ -16,14 +19,36 @@
   user-select: none;
 }
 
-.flex {
+.grid {
+  display: inline-grid;
+  grid-template-areas: var(--grid,
+    "nav nav"
+    "mn  mn"
+  );
+  column-gap: var(--grid-column-gap, 12px);
+}
+
+.navigation {
+  grid-area: nav;
+  height: var(--navigation-height, 16px);
+}
+
+.inline-flex {
   display: inline-flex;
   flex-direction: column;
+}
+
+.flex {
+  display: flex;
 }
 
 section {
   display: flex;
   justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .button {
@@ -56,6 +81,11 @@ td.today {
 /* has to be after today to override it */
 td.selected {
   background-color: var(--selected-bg-color, #00a699);
+  color: white;
+}
+
+td.in-range {
+  background-color: var(--in-range-bg-color, #00a699);
   color: white;
 }
 

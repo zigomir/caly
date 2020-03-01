@@ -3,20 +3,12 @@
 exports[`should render caly-calendar: render-01-01-2010 1`] = `
 <caly-calendar month="1" selected="01-01-2010" year="2010">
   <mock:shadow-root>
-    <div class="calendar flex">
-      <section>
+    <div class="grid">
+      <section class="navigation">
         <div class="button">
           <slot name="back">
             &lt;
           </slot>
-        </div>
-        <div>
-          <span class="month-name">
-            January
-          </span>
-          <span class="year">
-            2010
-          </span>
         </div>
         <div class="button">
           <slot name="forward">
@@ -24,169 +16,174 @@ exports[`should render caly-calendar: render-01-01-2010 1`] = `
           </slot>
         </div>
       </section>
-      <table>
-        <tr>
-          <td class="borderless day-name">
-            Su
-          </td>
-          <td class="borderless day-name">
-            Mo
-          </td>
-          <td class="borderless day-name">
-            Tu
-          </td>
-          <td class="borderless day-name">
-            We
-          </td>
-          <td class="borderless day-name">
-            Th
-          </td>
-          <td class="borderless day-name">
-            Fr
-          </td>
-          <td class="borderless day-name">
-            Sa
-          </td>
-        </tr>
-        <tr>
-          <td class="day other-month weekend">
-            27
-          </td>
-          <td class="day other-month">
-            28
-          </td>
-          <td class="day other-month">
-            29
-          </td>
-          <td class="day other-month">
-            30
-          </td>
-          <td class="day other-month">
-            31
-          </td>
-          <td class="current-month day selected">
-            1
-          </td>
-          <td class="current-month day weekend">
-            2
-          </td>
-        </tr>
-        <tr>
-          <td class="current-month day weekend">
-            3
-          </td>
-          <td class="current-month day">
-            4
-          </td>
-          <td class="current-month day">
-            5
-          </td>
-          <td class="current-month day">
-            6
-          </td>
-          <td class="current-month day">
-            7
-          </td>
-          <td class="current-month day">
-            8
-          </td>
-          <td class="current-month day weekend">
-            9
-          </td>
-        </tr>
-        <tr>
-          <td class="current-month day weekend">
-            10
-          </td>
-          <td class="current-month day">
-            11
-          </td>
-          <td class="current-month day">
-            12
-          </td>
-          <td class="current-month day">
-            13
-          </td>
-          <td class="current-month day">
-            14
-          </td>
-          <td class="current-month day">
-            15
-          </td>
-          <td class="current-month day weekend">
-            16
-          </td>
-        </tr>
-        <tr>
-          <td class="current-month day weekend">
-            17
-          </td>
-          <td class="current-month day">
-            18
-          </td>
-          <td class="current-month day">
-            19
-          </td>
-          <td class="current-month day">
-            20
-          </td>
-          <td class="current-month day">
-            21
-          </td>
-          <td class="current-month day">
-            22
-          </td>
-          <td class="current-month day weekend">
-            23
-          </td>
-        </tr>
-        <tr>
-          <td class="current-month day weekend">
-            24
-          </td>
-          <td class="current-month day">
-            25
-          </td>
-          <td class="current-month day">
-            26
-          </td>
-          <td class="current-month day">
-            27
-          </td>
-          <td class="current-month day">
-            28
-          </td>
-          <td class="current-month day">
-            29
-          </td>
-          <td class="current-month day weekend">
-            30
-          </td>
-        </tr>
-        <tr>
-          <td class="current-month day weekend">
-            31
-          </td>
-          <td class="day other-month">
-            1
-          </td>
-          <td class="day other-month">
-            2
-          </td>
-          <td class="day other-month">
-            3
-          </td>
-          <td class="day other-month">
-            4
-          </td>
-          <td class="day other-month">
-            5
-          </td>
-          <td class="day other-month weekend">
-            6
-          </td>
-        </tr>
-      </table>
+      <div class="inline-flex">
+        <div class="flex justify-center">
+          January 2010
+        </div>
+        <table>
+          <tr>
+            <td class="borderless day-name">
+              Su
+            </td>
+            <td class="borderless day-name">
+              Mo
+            </td>
+            <td class="borderless day-name">
+              Tu
+            </td>
+            <td class="borderless day-name">
+              We
+            </td>
+            <td class="borderless day-name">
+              Th
+            </td>
+            <td class="borderless day-name">
+              Fr
+            </td>
+            <td class="borderless day-name">
+              Sa
+            </td>
+          </tr>
+          <tr>
+            <td class="day other-month weekend">
+              27
+            </td>
+            <td class="day other-month">
+              28
+            </td>
+            <td class="day other-month">
+              29
+            </td>
+            <td class="day other-month">
+              30
+            </td>
+            <td class="day other-month">
+              31
+            </td>
+            <td class="current-month day selected">
+              1
+            </td>
+            <td class="current-month day weekend">
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="current-month day weekend">
+              3
+            </td>
+            <td class="current-month day">
+              4
+            </td>
+            <td class="current-month day">
+              5
+            </td>
+            <td class="current-month day">
+              6
+            </td>
+            <td class="current-month day">
+              7
+            </td>
+            <td class="current-month day">
+              8
+            </td>
+            <td class="current-month day weekend">
+              9
+            </td>
+          </tr>
+          <tr>
+            <td class="current-month day weekend">
+              10
+            </td>
+            <td class="current-month day">
+              11
+            </td>
+            <td class="current-month day">
+              12
+            </td>
+            <td class="current-month day">
+              13
+            </td>
+            <td class="current-month day">
+              14
+            </td>
+            <td class="current-month day">
+              15
+            </td>
+            <td class="current-month day weekend">
+              16
+            </td>
+          </tr>
+          <tr>
+            <td class="current-month day weekend">
+              17
+            </td>
+            <td class="current-month day">
+              18
+            </td>
+            <td class="current-month day">
+              19
+            </td>
+            <td class="current-month day">
+              20
+            </td>
+            <td class="current-month day">
+              21
+            </td>
+            <td class="current-month day">
+              22
+            </td>
+            <td class="current-month day weekend">
+              23
+            </td>
+          </tr>
+          <tr>
+            <td class="current-month day weekend">
+              24
+            </td>
+            <td class="current-month day">
+              25
+            </td>
+            <td class="current-month day">
+              26
+            </td>
+            <td class="current-month day">
+              27
+            </td>
+            <td class="current-month day">
+              28
+            </td>
+            <td class="current-month day">
+              29
+            </td>
+            <td class="current-month day weekend">
+              30
+            </td>
+          </tr>
+          <tr>
+            <td class="current-month day weekend">
+              31
+            </td>
+            <td class="day other-month">
+              1
+            </td>
+            <td class="day other-month">
+              2
+            </td>
+            <td class="day other-month">
+              3
+            </td>
+            <td class="day other-month">
+              4
+            </td>
+            <td class="day other-month">
+              5
+            </td>
+            <td class="day other-month weekend">
+              6
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </mock:shadow-root>
 </caly-calendar>

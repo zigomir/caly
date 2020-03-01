@@ -1,6 +1,6 @@
 {
   "name": "caly",
-  "version": "0.2.0",
+  "version": "0.3.2",
   "description": "Caly is a small calendar!",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -22,7 +22,7 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "^1.8.9",
+    "@stencil/core": "^1.8.11",
     "@types/jest": "24.0.25",
     "@types/puppeteer": "1.20.3",
     "cntdys": "^0.3.2",

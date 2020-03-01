@@ -21,7 +21,9 @@ const isSelected = (weekDay: IDay, { day, year, month }: CalendarDay) =>
   month === weekDay.month.month &&
   year === weekDay.month.year
 
-export const selectedDayToCalendarDay = (selectedDay: string) => {
+export const selectedDayToCalendarDay = (selectedDay?: string) => {
+  if (!selectedDay) return
+
   const [day, month, year] = selectedDay
     .split('-')
     .map(piece => parseInt(piece, 10))
@@ -33,11 +35,17 @@ export const dayClass = ({
   month,
   year,
   selectedDay,
+  rangeStart,
+  rangeEnd,
+  hoverDay,
 }: {
   weekDay: IDay
   month: MonthNumber
   year: number
   selectedDay?: CalendarDay
+  rangeStart?: CalendarDay
+  rangeEnd?: CalendarDay
+  hoverDay?: IDay
 }) => {
   const classes = ['day']
   if (isWeekend(weekDay)) {
@@ -52,6 +60,38 @@ export const dayClass = ({
   if (selectedDay && isSelected(weekDay, selectedDay)) {
     classes.push('selected')
   }
+
+  if (rangeStart && (hoverDay || rangeEnd)) {
+    const thisDayTs = Date.UTC(
+      weekDay.month.year,
+      weekDay.month.month - 1,
+      weekDay.dayInMonth
+    )
+    const rangeStartTs = Date.UTC(
+      rangeStart.year,
+      rangeStart.month - 1,
+      rangeStart.day
+    )
+    const hoverOrRangeEndTs = rangeEnd
+      ? Date.UTC(rangeEnd.year, rangeEnd.month - 1, rangeEnd.day)
+      : hoverDay
+      ? Date.UTC(
+          hoverDay.month.year,
+          hoverDay.month.month - 1,
+          hoverDay.dayInMonth
+        )
+      : undefined
+
+    if (
+      rangeStartTs &&
+      hoverOrRangeEndTs &&
+      ((thisDayTs >= rangeStartTs && thisDayTs <= hoverOrRangeEndTs) ||
+        (thisDayTs <= rangeStartTs && thisDayTs >= hoverOrRangeEndTs))
+    ) {
+      classes.push('in-range')
+    }
+  }
+
   return classes.join(' ')
 }
 
@@ -75,3 +115,5 @@ export const dayNames = (startOfTheWeek: number, locale = 'en-US') => {
 
 export const monthName = (year: number, month: number, locale = 'en-US') =>
   new Date(year, month - 1).toLocaleString(locale, { month: 'long' }) // must not use UTC here
+
+export const range = n => Array.from(Array(n).keys())
