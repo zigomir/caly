@@ -28,6 +28,10 @@
 
         --cell-width: 40px;
         --cell-height: 40px;
+
+        --grid:
+          "nav nav"
+          "mn mn";
       }
     </style>
   </head>
@@ -36,7 +40,8 @@
     <caly-calendar
       year="2020"
       month="1"
-      selected="01-01-2020"
+      range
+      number-of-months="2"
       locale="sl-SI"
       start-of-the-week="1"
     >
@@ -60,7 +65,13 @@
     <script>
       const calendar = document.querySelector('caly-calendar')
       calendar.addEventListener('daySelected', event =>
-        console.log(event.detail)
+        console.log('daySelected', event.detail)
+      )
+      calendar.addEventListener('rangeStartSelected', event =>
+        console.log('rangeStartSelected', event.detail)
+      )
+      calendar.addEventListener('rangeEndSelected', event =>
+        console.log('rangeEndSelected', event.detail)
       )
     </script>
   </body>

@@ -29,6 +29,18 @@ describe('dayClass', () => {
       dayClass({ ...weekendDay, selectedDay: { day: 5, month: 1, year: 2019 } })
     ).toContain('selected')
   })
+
+  it('should set in-range class-es', () => {
+    expect(
+      dayClass({
+        month: 1,
+        year: 2020,
+        weekDay: { dayInMonth: 7, dayInWeek: 2, month: { month: 1, year: 2020 } },
+        rangeStart: { day: 6, month: 1, year: 2020 },
+        rangeEnd: { day: 12, month: 1, year: 2020},
+      })
+    ).toContain('in-range')
+  })
 })
 
 describe('dayNames', () => {

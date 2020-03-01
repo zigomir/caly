@@ -13,4 +13,3 @@ see [caly-calendar component](./src/components/caly-calendar/readme.md)
 ## todo
 
 - customizable day names?
-- range selection? -> another component

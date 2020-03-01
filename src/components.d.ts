@@ -20,6 +20,22 @@ export namespace Components {
     */
     'month': number;
     /**
+    * (optional) Number of months rendered
+    */
+    'numberOfMonths': number;
+    /**
+    * (optional) Range
+    */
+    'range': boolean;
+    /**
+    * (optional) Range end (dd-mm-yyyy)
+    */
+    'rangeEnd': string;
+    /**
+    * (optional) Range start (dd-mm-yyyy)
+    */
+    'rangeStart': string;
+    /**
     * (optional) Selected day (dd-mm-yyyy)
     */
     'selected': string;
@@ -58,9 +74,33 @@ declare namespace LocalJSX {
     */
     'month': number;
     /**
+    * (optional) Number of months rendered
+    */
+    'numberOfMonths'?: number;
+    /**
     * (optional) Event to listen for when new day is selected.
     */
     'onDaySelected'?: (event: CustomEvent<any>) => void;
+    /**
+    * (optional) Event to listen for when range end day is selected.
+    */
+    'onRangeEndSelected'?: (event: CustomEvent<any>) => void;
+    /**
+    * (optional) Event to listen for when range start day is selected.
+    */
+    'onRangeStartSelected'?: (event: CustomEvent<any>) => void;
+    /**
+    * (optional) Range
+    */
+    'range'?: boolean;
+    /**
+    * (optional) Range end (dd-mm-yyyy)
+    */
+    'rangeEnd'?: string;
+    /**
+    * (optional) Range start (dd-mm-yyyy)
+    */
+    'rangeStart'?: string;
     /**
     * (optional) Selected day (dd-mm-yyyy)
     */

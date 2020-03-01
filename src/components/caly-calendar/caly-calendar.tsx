@@ -1,14 +1,21 @@
-import { Component, Prop, Event, EventEmitter, h } from '@stencil/core'
+import { Component, Prop, Event, EventEmitter, h, State } from '@stencil/core'
 import {
   dayClass,
   selectedDayToCalendarDay,
   dayNames,
   monthName,
+  range,
 } from '../../utils/utils'
 import { calendarMonth, IDay, getPreviousMonth, getNextMonth } from 'cntdys'
 
 const chromeBordersFix = (table: HTMLElement) => {
   table.style.borderSpacing = table.style.borderSpacing === '0px' ? '' : '0px'
+}
+
+interface IMonth {
+  year: number
+  month: number
+  weeks: IDay[][]
 }
 
 /**
@@ -21,7 +28,9 @@ const chromeBordersFix = (table: HTMLElement) => {
   shadow: true,
 })
 export class CalyCalendar {
-  private table: HTMLElement
+  private tables: HTMLElement[] = []
+
+  @State() hoverDay: IDay
 
   /** (required) Year (YYYY) */
   @Prop({ mutable: true, reflect: true }) year!: number
@@ -33,76 +42,129 @@ export class CalyCalendar {
   @Prop() locale: string = 'en-US'
   /** (optional) Start of the week. 0 for Sunday, 1 for Monday, etc. */
   @Prop() startOfTheWeek: number = 0
+  /** (optional) Number of months rendered */
+  @Prop() numberOfMonths: number = 1
+
+  /** (optional) Range */
+  @Prop() range: boolean = false
+  /** (optional) Range start (dd-mm-yyyy) */
+  @Prop({ mutable: true, reflect: true }) rangeStart: string
+  /** (optional) Range end (dd-mm-yyyy) */
+  @Prop({ mutable: true, reflect: true }) rangeEnd: string
 
   /** (optional) Event to listen for when new day is selected. */
   @Event({ eventName: 'daySelected' }) daySelected: EventEmitter
+  /** (optional) Event to listen for when range start day is selected. */
+  @Event({ eventName: 'rangeStartSelected' }) rangeStartSelected: EventEmitter
+  /** (optional) Event to listen for when range end day is selected. */
+  @Event({ eventName: 'rangeEndSelected' }) rangeEndSelected: EventEmitter
 
   private handleDayClick(day: IDay) {
     const dayInMonth = day.dayInMonth.toString().padStart(2, '0')
     const month = day.month.month.toString().padStart(2, '0')
+    const selectedDay = `${dayInMonth}-${month}-${day.month.year}`
 
-    this.selected = `${dayInMonth}-${month}-${day.month.year}`
-    this.daySelected.emit(this.selected) // or day
+    if (this.range) {
+      if (!this.rangeStart) {
+        this.rangeStart = selectedDay
+        this.rangeStartSelected.emit(selectedDay)
+      } else if (!this.rangeEnd) {
+        this.rangeEnd = selectedDay
+        this.rangeEndSelected.emit(selectedDay)
+      } else {
+        this.rangeStart = selectedDay
+        this.rangeEnd = null
+        this.rangeStartSelected.emit(selectedDay)
+      }
+    } else {
+      this.selected = selectedDay
+      this.daySelected.emit(selectedDay)
+    }
+  }
+
+  private handleMouseOver(day: IDay) {
+    if (this.range) {
+      this.hoverDay = day
+    }
   }
 
   private back() {
     const { month, year } = getPreviousMonth(this.year, this.month)
     this.month = month
     this.year = year
-    chromeBordersFix(this.table)
+    this.tables.forEach(table => chromeBordersFix(table))
   }
 
   private forward() {
     const { month, year } = getNextMonth(this.year, this.month)
     this.month = month
     this.year = year
-    chromeBordersFix(this.table)
+    this.tables.forEach(table => chromeBordersFix(table))
   }
 
   render() {
-    const month = calendarMonth(this.year, this.month, this.startOfTheWeek)
+    let month = { month: this.month, year: this.year }
+    let months: IMonth[] = []
+
+    for (let _i of range(this.numberOfMonths)) {
+      months.push(
+        {
+          year: month.year,
+          month: month.month,
+          weeks: calendarMonth(month.year, month.month, this.startOfTheWeek),
+        }
+      )
+      month = getNextMonth(month.year, month.month) // mutates month variable to progress it into next month
+    }
 
     return (
-      <div class="calendar flex">
-        <section>
+      <div class="grid">
+        <section class="navigation">
           <div onClick={() => this.back()} class="button">
             <slot name="back">&lt;</slot>
-          </div>
-          <div>
-            <span class="month-name">
-              {monthName(this.year, this.month, this.locale)}
-            </span>
-            &nbsp;
-            <span class="year">{this.year}</span>
           </div>
           <div onClick={() => this.forward()} class="button">
             <slot name="forward">&gt;</slot>
           </div>
         </section>
-        <table ref={el => (this.table = el)}>
-          <tr>
-            {dayNames(this.startOfTheWeek, this.locale).map(dayName => (
-              <td class="borderless day-name">{dayName}</td>
-            ))}
-          </tr>
-          {month.map(week => (
-            <tr>
-              {week.map(day => (
-                <td
-                  class={dayClass({
-                    weekDay: day,
-                    month: this.month,
-                    year: this.year,
-                    selectedDay: selectedDayToCalendarDay(this.selected),
-                  })}
-                  onClick={() => this.handleDayClick(day)}
-                >
-                  {day.dayInMonth}
-                </td>
+
+        {months.map(month => (
+          <div class="inline-flex">
+            <div class="flex justify-center">
+              {monthName(month.year, month.month, this.locale)} {month.year}
+            </div>
+            <table
+              ref={el => (this.tables.includes(el) ? {} : this.tables.push(el))}
+            >
+              <tr>
+                {dayNames(this.startOfTheWeek, this.locale).map(dayName => (
+                  <td class="borderless day-name">{dayName}</td>
+                ))}
+              </tr>
+              {month.weeks.map(week => (
+                <tr>
+                  {week.map(day => (
+                    <td
+                      class={dayClass({
+                        weekDay: day,
+                        month: month.month,
+                        year: month.year,
+                        selectedDay: selectedDayToCalendarDay(this.selected),
+                        rangeStart: selectedDayToCalendarDay(this.rangeStart),
+                        rangeEnd: selectedDayToCalendarDay(this.rangeEnd),
+                        hoverDay: this.hoverDay,
+                      })}
+                      onClick={() => this.handleDayClick(day)}
+                      onMouseOver={() => this.handleMouseOver(day)}
+                    >
+                      {day.dayInMonth}
+                    </td>
+                  ))}
+                </tr>
               ))}
-            </tr>
-          ))}
-        </table>
+            </table>
+          </div>
+        ))}
       </div>
     )
   }
