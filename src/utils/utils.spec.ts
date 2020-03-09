@@ -30,16 +30,35 @@ describe('dayClass', () => {
     ).toContain('selected')
   })
 
-  it('should set in-range class-es', () => {
+  it('should set `in-range` class', () => {
     expect(
       dayClass({
         month: 1,
         year: 2020,
-        weekDay: { dayInMonth: 7, dayInWeek: 2, month: { month: 1, year: 2020 } },
+        weekDay: {
+          dayInMonth: 7,
+          dayInWeek: 2,
+          month: { month: 1, year: 2020 },
+        },
         rangeStart: { day: 6, month: 1, year: 2020 },
-        rangeEnd: { day: 12, month: 1, year: 2020},
+        rangeEnd: { day: 12, month: 1, year: 2020 },
       })
     ).toContain('in-range')
+  })
+
+  it('should set `range-select-in-progress` class', () => {
+    expect(
+      dayClass({
+        month: 1,
+        year: 2020,
+        weekDay: {
+          dayInMonth: 7,
+          dayInWeek: 2,
+          month: { month: 1, year: 2020 },
+        },
+        rangeStart: { day: 6, month: 1, year: 2020 },
+      })
+    ).toContain('range-select-in-progress')
   })
 })
 

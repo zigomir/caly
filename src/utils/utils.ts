@@ -92,6 +92,10 @@ export const dayClass = ({
     }
   }
 
+  if (rangeStart && !rangeEnd) {
+    classes.push('range-select-in-progress')
+  }
+
   return classes.join(' ')
 }
 

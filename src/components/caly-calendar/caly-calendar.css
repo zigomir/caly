@@ -95,7 +95,10 @@ td.other-month {
 }
 
 td.day:not(.other-month):hover {
+  cursor: pointer;
+}
+
+td.day:not(.other-month):not(.range-select-in-progress):hover {
   background-color: var(--hover-bg-color, gainsboro);
   color: var(--hover-color, black);
-  cursor: pointer;
 }
