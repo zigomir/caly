@@ -1,6 +1,6 @@
 # caly
 
-> 7k calendar with range selection 📅
+> 9k calendar with range selection 📅
 
 ## usage example on codepen
 
