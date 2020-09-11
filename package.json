@@ -2,14 +2,12 @@
   "name": "caly",
   "version": "0.3.3",
   "description": "Caly is a small calendar!",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/caly/caly.js",
+  "unpkg": "dist/caly/caly.esm.js",
   "files": [
     "dist/",
     "loader/"
@@ -18,17 +16,16 @@
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "devDependencies": {
-    "@stencil/core": "^1.13.0",
-    "@types/jest": "25.2.3",
-    "@types/puppeteer": "3.0.0",
+    "@stencil/core": "^2.0.3",
+    "@types/jest": "26.0.13",
+    "@types/puppeteer": "3.0.2",
     "cntdys": "^0.3.2",
-    "jest": "26.0.1",
-    "jest-cli": "26.0.1",
-    "puppeteer": "3.1.0"
+    "jest": "26.4.2",
+    "jest-cli": "26.4.2",
+    "puppeteer": "5.2.1"
   },
   "license": "MIT"
 }
