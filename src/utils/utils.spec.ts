@@ -92,7 +92,7 @@ describe('monthName', () => {
 
 describe('selectedDayToCalendarDay', () => {
   it('parses dd-mm-yyyy', () => {
-    expect(selectedDayToCalendarDay('01-02-2020')).toEqual({
+    expect(selectedDayToCalendarDay('2020-02-01')).toEqual({
       day: 1,
       month: 2,
       year: 2020,

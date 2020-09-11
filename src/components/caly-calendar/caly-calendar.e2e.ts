@@ -3,7 +3,7 @@ import { newE2EPage } from '@stencil/core/testing'
 describe('example', () => {
   it('should render and select new day on click', async () => {
     const page = await newE2EPage()
-    await page.setContent(`<caly-calendar year="2020" month="1" selected="01-01-2020" start-of-the-week="1"></caly-calendar>`)
+    await page.setContent(`<caly-calendar year="2020" month="1" selected="2020-01-01" start-of-the-week="1"></caly-calendar>`)
     const selectedEl = await page.find('caly-calendar >>> .selected')
     expect(selectedEl.textContent).toBe('1')
 
