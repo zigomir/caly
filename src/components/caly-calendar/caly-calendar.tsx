@@ -44,6 +44,8 @@ export class CalyCalendar {
   @Prop() startOfTheWeek: number = 0
   /** (optional) Number of months rendered */
   @Prop() numberOfMonths: number = 1
+  /** (optional) Show previous number of months */
+  @Prop() showPreviousNumberOfMonths: boolean = false
   /** (optional) Disabled days */
   @Prop() disableOnDay?: (timestamp: number) => boolean
 
@@ -109,14 +111,19 @@ export class CalyCalendar {
     let months: IMonth[] = []
 
     for (let _i of range(this.numberOfMonths)) {
-      months.push(
-        {
-          year: month.year,
-          month: month.month,
-          weeks: calendarMonth(month.year, month.month, this.startOfTheWeek),
-        }
-      )
-      month = getNextMonth(month.year, month.month) // mutates month variable to progress it into next month
+      let otherMonth = {
+        year: month.year,
+        month: month.month,
+        weeks: calendarMonth(month.year, month.month, this.startOfTheWeek),
+      }
+
+      if (this.showPreviousNumberOfMonths) {
+        months.unshift(otherMonth)
+        month = getPreviousMonth(month.year, month.month) // going back
+      } else {
+        months.push(otherMonth)
+        month = getNextMonth(month.year, month.month) // mutates month variable to progress it into next month
+      }
     }
 
     return (
