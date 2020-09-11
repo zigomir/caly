@@ -62,7 +62,7 @@ export class CalyCalendar {
   private handleDayClick(day: IDay) {
     const dayInMonth = day.dayInMonth.toString().padStart(2, '0')
     const month = day.month.month.toString().padStart(2, '0')
-    const selectedDay = `${dayInMonth}-${month}-${day.month.year}`
+    const selectedDay = `${day.month.year}-${month}-${dayInMonth}`
 
     if (this.range) {
       if (!this.rangeStart) {
