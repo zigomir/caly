@@ -63,12 +63,13 @@ export const dayClass = ({
     classes.push('selected')
   }
 
+  const thisDayTs = Date.UTC(
+    weekDay.month.year,
+    weekDay.month.month - 1,
+    weekDay.dayInMonth
+  )
+
   if (rangeStart && (hoverDay || rangeEnd)) {
-    const thisDayTs = Date.UTC(
-      weekDay.month.year,
-      weekDay.month.month - 1,
-      weekDay.dayInMonth
-    )
     const rangeStartTs = Date.UTC(
       rangeStart.year,
       rangeStart.month - 1,
@@ -98,16 +99,7 @@ export const dayClass = ({
     classes.push('range-select-in-progress')
   }
 
-  if (
-    disableOnDay &&
-    disableOnDay(
-      new Date(
-        weekDay.month.year,
-        weekDay.month.month - 1,
-        weekDay.dayInMonth
-      ).getTime()
-    )
-  ) {
+  if (disableOnDay && disableOnDay(thisDayTs)) {
     classes.push('disabled')
   }
 
