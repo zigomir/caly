@@ -25,7 +25,7 @@
     "nav nav"
     "mn  mn"
   );
-  column-gap: var(--grid-column-gap, 12px);
+  column-gap: var(--grid-column-gap, 0px);
 }
 
 .navigation {
