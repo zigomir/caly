@@ -46,17 +46,19 @@ Caly, a 6k customizable calendar.
 
 ## Properties
 
-| Property             | Attribute           | Description                                                    | Type      | Default     |
-| -------------------- | ------------------- | -------------------------------------------------------------- | --------- | ----------- |
-| `locale`             | `locale`            | (optional) Locale                                              | `string`  | `'en-US'`   |
-| `month` _(required)_ | `month`             | (required) Month (1-12)                                        | `number`  | `undefined` |
-| `numberOfMonths`     | `number-of-months`  | (optional) Number of months rendered                           | `number`  | `1`         |
-| `range`              | `range`             | (optional) Range                                               | `boolean` | `false`     |
-| `rangeEnd`           | `range-end`         | (optional) Range end (dd-mm-yyyy)                              | `string`  | `undefined` |
-| `rangeStart`         | `range-start`       | (optional) Range start (dd-mm-yyyy)                            | `string`  | `undefined` |
-| `selected`           | `selected`          | (optional) Selected day (dd-mm-yyyy)                           | `string`  | `undefined` |
-| `startOfTheWeek`     | `start-of-the-week` | (optional) Start of the week. 0 for Sunday, 1 for Monday, etc. | `number`  | `0`         |
-| `year` _(required)_  | `year`              | (required) Year (YYYY)                                         | `number`  | `undefined` |
+| Property                     | Attribute                        | Description                                                    | Type                             | Default                     |
+| ---------------------------- | -------------------------------- | -------------------------------------------------------------- | -------------------------------- | --------------------------- |
+| `disableOnDay`               | --                               | (optional) Disabled days                                       | `(timestamp: number) => boolean` | `undefined`                 |
+| `locale`                     | `locale`                         | (optional) Locale                                              | `string`                         | `'en-US'`                   |
+| `month`                      | `month`                          | (required) Month (1-12)                                        | `number`                         | `new Date().getMonth() + 1` |
+| `numberOfMonths`             | `number-of-months`               | (optional) Number of months rendered                           | `number`                         | `1`                         |
+| `range`                      | `range`                          | (optional) Range                                               | `boolean`                        | `false`                     |
+| `rangeEnd`                   | `range-end`                      | (optional) Range end (dd-mm-yyyy)                              | `string`                         | `undefined`                 |
+| `rangeStart`                 | `range-start`                    | (optional) Range start (dd-mm-yyyy)                            | `string`                         | `undefined`                 |
+| `selected`                   | `selected`                       | (optional) Selected day (dd-mm-yyyy)                           | `string`                         | `undefined`                 |
+| `showPreviousNumberOfMonths` | `show-previous-number-of-months` | (optional) Show previous number of months                      | `boolean`                        | `false`                     |
+| `startOfTheWeek`             | `start-of-the-week`              | (optional) Start of the week. 0 for Sunday, 1 for Monday, etc. | `number`                         | `0`                         |
+| `year`                       | `year`                           | (required) Year (YYYY)                                         | `number`                         | `new Date().getFullYear()`  |
 
 
 ## Events
@@ -64,6 +66,7 @@ Caly, a 6k customizable calendar.
 | Event                | Description                                                      | Type               |
 | -------------------- | ---------------------------------------------------------------- | ------------------ |
 | `daySelected`        | (optional) Event to listen for when new day is selected.         | `CustomEvent<any>` |
+| `hoveredDay`         | (optional) Event to listen for what day is currently hovered.    | `CustomEvent<any>` |
 | `rangeEndSelected`   | (optional) Event to listen for when range end day is selected.   | `CustomEvent<any>` |
 | `rangeStartSelected` | (optional) Event to listen for when range start day is selected. | `CustomEvent<any>` |
 

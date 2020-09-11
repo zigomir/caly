@@ -8,6 +8,10 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface CalyCalendar {
         /**
+          * (optional) Disabled days
+         */
+        "disableOnDay"?: (timestamp: number) => boolean;
+        /**
           * (optional) Locale
          */
         "locale": string;
@@ -36,6 +40,10 @@ export namespace Components {
          */
         "selected": string;
         /**
+          * (optional) Show previous number of months
+         */
+        "showPreviousNumberOfMonths": boolean;
+        /**
           * (optional) Start of the week. 0 for Sunday, 1 for Monday, etc.
          */
         "startOfTheWeek": number;
@@ -59,13 +67,17 @@ declare global {
 declare namespace LocalJSX {
     interface CalyCalendar {
         /**
+          * (optional) Disabled days
+         */
+        "disableOnDay"?: (timestamp: number) => boolean;
+        /**
           * (optional) Locale
          */
         "locale"?: string;
         /**
           * (required) Month (1-12)
          */
-        "month": number;
+        "month"?: number;
         /**
           * (optional) Number of months rendered
          */
@@ -74,6 +86,10 @@ declare namespace LocalJSX {
           * (optional) Event to listen for when new day is selected.
          */
         "onDaySelected"?: (event: CustomEvent<any>) => void;
+        /**
+          * (optional) Event to listen for what day is currently hovered.
+         */
+        "onHoveredDay"?: (event: CustomEvent<any>) => void;
         /**
           * (optional) Event to listen for when range end day is selected.
          */
@@ -99,13 +115,17 @@ declare namespace LocalJSX {
          */
         "selected"?: string;
         /**
+          * (optional) Show previous number of months
+         */
+        "showPreviousNumberOfMonths"?: boolean;
+        /**
           * (optional) Start of the week. 0 for Sunday, 1 for Monday, etc.
          */
         "startOfTheWeek"?: number;
         /**
           * (required) Year (YYYY)
          */
-        "year": number;
+        "year"?: number;
     }
     interface IntrinsicElements {
         "caly-calendar": CalyCalendar;
