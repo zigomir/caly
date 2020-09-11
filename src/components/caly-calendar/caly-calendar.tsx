@@ -62,6 +62,8 @@ export class CalyCalendar {
   @Event({ eventName: 'rangeStartSelected' }) rangeStartSelected: EventEmitter
   /** (optional) Event to listen for when range end day is selected. */
   @Event({ eventName: 'rangeEndSelected' }) rangeEndSelected: EventEmitter
+  /** (optional) Event to listen for what day is currently hovered. */
+  @Event({ eventName: 'hoveredDay' }) hoveredDay: EventEmitter
 
   private handleDayClick(day: IDay) {
     const dayInMonth = day.dayInMonth.toString().padStart(2, '0')
@@ -89,6 +91,7 @@ export class CalyCalendar {
   private handleMouseOver(day: IDay) {
     if (this.range) {
       this.hoverDay = day
+      this.hoveredDay.emit(day)
     }
   }
 
