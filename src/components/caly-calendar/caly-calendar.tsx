@@ -33,9 +33,9 @@ export class CalyCalendar {
   @State() hoverDay: IDay
 
   /** (required) Year (YYYY) */
-  @Prop({ mutable: true, reflect: true }) year!: number
+  @Prop({ mutable: true, reflect: true }) year: number = new Date().getFullYear()
   /** (required) Month (1-12) */
-  @Prop({ mutable: true, reflect: true }) month!: number
+  @Prop({ mutable: true, reflect: true }) month: number = new Date().getMonth() + 1
   /** (optional) Selected day (dd-mm-yyyy) */
   @Prop({ mutable: true, reflect: true }) selected: string
   /** (optional) Locale */
