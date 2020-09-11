@@ -44,6 +44,8 @@ export class CalyCalendar {
   @Prop() startOfTheWeek: number = 0
   /** (optional) Number of months rendered */
   @Prop() numberOfMonths: number = 1
+  /** (optional) Disabled days */
+  @Prop() disableOnDay?: (timestamp: number) => boolean
 
   /** (optional) Range */
   @Prop() range: boolean = false
@@ -153,6 +155,7 @@ export class CalyCalendar {
                         rangeStart: selectedDayToCalendarDay(this.rangeStart),
                         rangeEnd: selectedDayToCalendarDay(this.rangeEnd),
                         hoverDay: this.hoverDay,
+                        disableOnDay: this.disableOnDay,
                       })}
                       onClick={() => this.handleDayClick(day)}
                       onMouseOver={() => this.handleMouseOver(day)}

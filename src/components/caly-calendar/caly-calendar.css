@@ -28,6 +28,11 @@
   column-gap: var(--grid-column-gap, 0px);
 }
 
+.disabled {
+  pointer-events: none;
+  color: var(--out-of-range-color, #d3d3d3);
+}
+
 .navigation {
   grid-area: nav;
   height: var(--navigation-height, 16px);
