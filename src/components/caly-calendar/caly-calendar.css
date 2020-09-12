@@ -1,17 +1,27 @@
 /**
  * @prop --grid: Specify grid template areas
  * @prop --grid-column-gap: Specify grid column gap
+ * @prop --out-of-range-color: Cell text color when day is out of range / disabled
  * @prop --navigation-height: Specify grid column gap
  * @prop --font: Pass the font family you want the text to be in
- * @prop --border-width: Width of the calendar cell border
- * @prop --border-color: Color of the calendar cell border
+ * @prop --cell-border-width: Width of the calendar cell border
+ * @prop --cell-border-style: Style of the calendar cell border
+ * @prop --cell-border-color: Color of the calendar cell border
  * @prop --cell-width: Width of the calendar cell
  * @prop --cell-height: Height of the calendar cell
+ * @prop --cell-text-align: Text alignment of the calendar cell
+ * @prop --cell-font-size: Font size of the calendar cell
+ * @prop --day-name-font-size: Font size of day name
+ * @prop --today-color: Font color of today's cell
  * @prop --selected-bg-color: Background color of selected day cell
+ * @prop --selected-color: Color of selected day cell
  * @prop --other-month-visibility: Hidden by default, can be set to visible
  * @prop --other-month-border: None by default
  * @prop --hover-bg-color: Cell background color on hover
  * @prop --hover-color: Cell text color on hover
+ * @prop --day-cursor: Cursor on cell hover
+ * @prop --in-range-bg-color: Background color of in-range cell
+ * @prop --in-range-color: Color of in-range cell
  */
 
 :host {
@@ -65,10 +75,13 @@ table {
 }
 
 td {
-  border: var(--border-width, 1px) solid var(--border-color, #e4e7e7);
-  text-align: center;
-  width: var(--cell-width, 36px);
-  height: var(--cell-height, 36px);
+  border-width: var(--cell-border-width, 1px);
+  border-style: var(--cell-border-style, solid);
+  border-color: var(--cell-border-color, #e4e7e7);
+  width: var(--cell-width, 2.5rem);
+  height: var(--cell-height, 2.5rem);
+  text-align: var(--cell-text-align, center);
+  font-size: var(--cell-font-size, 1rem);
 }
 
 td.borderless {
@@ -76,22 +89,22 @@ td.borderless {
 }
 
 td.day-name {
-  font-size: 12px;
+  font-size: var(--day-name-font-size, 1rem);
 }
 
 td.today {
-  color: #9e9c9c;
+  color: var(--today-color, #9e9c9c);
 }
 
 /* has to be after today to override it */
 td.selected {
   background-color: var(--selected-bg-color, #00a699);
-  color: white;
+  color: var(--selected-color, white);
 }
 
 td.in-range {
   background-color: var(--in-range-bg-color, #00a699);
-  color: white;
+  color: var(--in-range-color, white);
 }
 
 td.other-month {
@@ -100,7 +113,7 @@ td.other-month {
 }
 
 td.day:not(.other-month):hover {
-  cursor: pointer;
+  cursor: var(--day-cursor, pointer);
 }
 
 td.day:not(.other-month):not(.range-select-in-progress):hover {
