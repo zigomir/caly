@@ -24,7 +24,7 @@ const isSelected = (weekDay: IDay, { day, year, month }: CalendarDay) =>
 export const selectedDayToCalendarDay = (selectedDay?: string) => {
   if (!selectedDay) return
 
-  const [day, month, year] = selectedDay
+  const [year, month, day] = selectedDay
     .split('-')
     .map(piece => parseInt(piece, 10))
   return { day, month, year }
@@ -38,6 +38,7 @@ export const dayClass = ({
   rangeStart,
   rangeEnd,
   hoverDay,
+  disableOnDay,
 }: {
   weekDay: IDay
   month: MonthNumber
@@ -45,7 +46,8 @@ export const dayClass = ({
   selectedDay?: CalendarDay
   rangeStart?: CalendarDay
   rangeEnd?: CalendarDay
-  hoverDay?: IDay
+  hoverDay?: IDay,
+  disableOnDay?: (timestamp: number) => boolean,
 }) => {
   const classes = ['day']
   if (isWeekend(weekDay)) {
@@ -61,12 +63,13 @@ export const dayClass = ({
     classes.push('selected')
   }
 
+  const thisDayTs = Date.UTC(
+    weekDay.month.year,
+    weekDay.month.month - 1,
+    weekDay.dayInMonth
+  )
+
   if (rangeStart && (hoverDay || rangeEnd)) {
-    const thisDayTs = Date.UTC(
-      weekDay.month.year,
-      weekDay.month.month - 1,
-      weekDay.dayInMonth
-    )
     const rangeStartTs = Date.UTC(
       rangeStart.year,
       rangeStart.month - 1,
@@ -94,6 +97,10 @@ export const dayClass = ({
 
   if (rangeStart && !rangeEnd) {
     classes.push('range-select-in-progress')
+  }
+
+  if (disableOnDay && disableOnDay(thisDayTs)) {
+    classes.push('disabled')
   }
 
   return classes.join(' ')

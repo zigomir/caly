@@ -33,9 +33,9 @@ export class CalyCalendar {
   @State() hoverDay: IDay
 
   /** (required) Year (YYYY) */
-  @Prop({ mutable: true, reflect: true }) year!: number
+  @Prop({ mutable: true, reflect: true }) year: number = new Date().getFullYear()
   /** (required) Month (1-12) */
-  @Prop({ mutable: true, reflect: true }) month!: number
+  @Prop({ mutable: true, reflect: true }) month: number = new Date().getMonth() + 1
   /** (optional) Selected day (dd-mm-yyyy) */
   @Prop({ mutable: true, reflect: true }) selected: string
   /** (optional) Locale */
@@ -44,6 +44,10 @@ export class CalyCalendar {
   @Prop() startOfTheWeek: number = 0
   /** (optional) Number of months rendered */
   @Prop() numberOfMonths: number = 1
+  /** (optional) Show previous number of months */
+  @Prop() showPreviousNumberOfMonths: boolean = false
+  /** (optional) Disabled days */
+  @Prop() disableOnDay?: (timestamp: number) => boolean
 
   /** (optional) Range */
   @Prop() range: boolean = false
@@ -58,11 +62,13 @@ export class CalyCalendar {
   @Event({ eventName: 'rangeStartSelected' }) rangeStartSelected: EventEmitter
   /** (optional) Event to listen for when range end day is selected. */
   @Event({ eventName: 'rangeEndSelected' }) rangeEndSelected: EventEmitter
+  /** (optional) Event to listen for what day is currently hovered. */
+  @Event({ eventName: 'hoveredDay' }) hoveredDay: EventEmitter
 
   private handleDayClick(day: IDay) {
     const dayInMonth = day.dayInMonth.toString().padStart(2, '0')
     const month = day.month.month.toString().padStart(2, '0')
-    const selectedDay = `${dayInMonth}-${month}-${day.month.year}`
+    const selectedDay = `${day.month.year}-${month}-${dayInMonth}`
 
     if (this.range) {
       if (!this.rangeStart) {
@@ -85,6 +91,7 @@ export class CalyCalendar {
   private handleMouseOver(day: IDay) {
     if (this.range) {
       this.hoverDay = day
+      this.hoveredDay.emit(day)
     }
   }
 
@@ -107,14 +114,19 @@ export class CalyCalendar {
     let months: IMonth[] = []
 
     for (let _i of range(this.numberOfMonths)) {
-      months.push(
-        {
-          year: month.year,
-          month: month.month,
-          weeks: calendarMonth(month.year, month.month, this.startOfTheWeek),
-        }
-      )
-      month = getNextMonth(month.year, month.month) // mutates month variable to progress it into next month
+      let otherMonth = {
+        year: month.year,
+        month: month.month,
+        weeks: calendarMonth(month.year, month.month, this.startOfTheWeek),
+      }
+
+      if (this.showPreviousNumberOfMonths) {
+        months.unshift(otherMonth)
+        month = getPreviousMonth(month.year, month.month) // going back
+      } else {
+        months.push(otherMonth)
+        month = getNextMonth(month.year, month.month) // mutates month variable to progress it into next month
+      }
     }
 
     return (
@@ -153,6 +165,7 @@ export class CalyCalendar {
                         rangeStart: selectedDayToCalendarDay(this.rangeStart),
                         rangeEnd: selectedDayToCalendarDay(this.rangeEnd),
                         hoverDay: this.hoverDay,
+                        disableOnDay: this.disableOnDay,
                       })}
                       onClick={() => this.handleDayClick(day)}
                       onMouseOver={() => this.handleMouseOver(day)}
