@@ -81,21 +81,31 @@ Caly, a 6k customizable calendar.
 
 ## CSS Custom Properties
 
-| Name                       | Description                                     |
-| -------------------------- | ----------------------------------------------- |
-| `--border-color`           | Color of the calendar cell border               |
-| `--border-width`           | Width of the calendar cell border               |
-| `--cell-height`            | Height of the calendar cell                     |
-| `--cell-width`             | Width of the calendar cell                      |
-| `--font`                   | Pass the font family you want the text to be in |
-| `--grid`                   | Specify grid template areas                     |
-| `--grid-column-gap`        | Specify grid column gap                         |
-| `--hover-bg-color`         | Cell background color on hover                  |
-| `--hover-color`            | Cell text color on hover                        |
-| `--navigation-height`      | Specify grid column gap                         |
-| `--other-month-border`     | None by default                                 |
-| `--other-month-visibility` | Hidden by default, can be set to visible        |
-| `--selected-bg-color`      | Background color of selected day cell           |
+| Name                       | Description                                         |
+| -------------------------- | --------------------------------------------------- |
+| `--cell-border-color`      | Color of the calendar cell border                   |
+| `--cell-border-style`      | Style of the calendar cell border                   |
+| `--cell-border-width`      | Width of the calendar cell border                   |
+| `--cell-font-size`         | Font size of the calendar cell                      |
+| `--cell-height`            | Height of the calendar cell                         |
+| `--cell-text-align`        | Text alignment of the calendar cell                 |
+| `--cell-width`             | Width of the calendar cell                          |
+| `--day-cursor`             | Cursor on cell hover                                |
+| `--day-name-font-size`     | Font size of day name                               |
+| `--font`                   | Pass the font family you want the text to be in     |
+| `--grid`                   | Specify grid template areas                         |
+| `--grid-column-gap`        | Specify grid column gap                             |
+| `--hover-bg-color`         | Cell background color on hover                      |
+| `--hover-color`            | Cell text color on hover                            |
+| `--in-range-bg-color`      | Background color of in-range cell                   |
+| `--in-range-color`         | Color of in-range cell                              |
+| `--navigation-height`      | Specify grid column gap                             |
+| `--other-month-border`     | None by default                                     |
+| `--other-month-visibility` | Hidden by default, can be set to visible            |
+| `--out-of-range-color`     | Cell text color when day is out of range / disabled |
+| `--selected-bg-color`      | Background color of selected day cell               |
+| `--selected-color`         | Color of selected day cell                          |
+| `--today-color`            | Font color of today's cell                          |
 
 
 ----------------------------------------------
