@@ -12,16 +12,24 @@
     <script nomodule src="/build/caly.js"></script>
 
     <style>
-      /* no need to use `:root` here */
       caly-calendar {
         --font: fantasy;
 
-        --border-color: teal;
-        --border-width: 2px;
+        --cell-border-color: teal;
+        --cell-border-width: 1px;
+        --cell-border-style: dotted;
+        --cell-text-align: left;
+        --cell-font-size: 24px;
+
+        --day-name-font-size: 20px;
+        /*Same as others*/
+        --today-color: default;
+        --selected-color: yellow;
 
         --selected-bg-color: grey;
-        --hover-bg-color: black;
-        --hover-color: white;
+
+        --out-of-range-color: red;
+        --navigation-height: 20px;
 
         --cell-width: 40px;
         --cell-height: 40px;
@@ -32,16 +40,26 @@
 
         --grid-column-gap: 15px;
 
-        /* --other-month-visibility: visible; */
-        /* --other-month-border: 2px solid red; */
+        --in-range-bg-color: yellow;
+        --in-range-color: black;
+
+        /*
+         * It's kinda OK to use same color for hover and in range
+         * It prevents weird effects after selecting end range and then triggering different colors due to hover state.
+         */
+        --hover-bg-color: yellow;
+        --hover-color: black;
+
+        --other-month-visibility: visible;
+        --other-month-border: 1px solid red;
+
+        --day-cursor: crosshair;
       }
     </style>
   </head>
 
   <body>
     <caly-calendar
-      year="2020"
-      month="2"
       range
       number-of-months="2"
     >
