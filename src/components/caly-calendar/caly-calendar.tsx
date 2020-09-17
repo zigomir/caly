@@ -19,8 +19,9 @@ interface IMonth {
 }
 
 /**
- * @slot back – Slot for the previous month button
- * @slot forward – Slot for the next month button
+ * @slot misc - Slot for the miscellaneous, e.g. date preset buttons
+ * @slot back - Slot for the previous month button
+ * @slot forward - Slot for the next month button
  */
 @Component({
   tag: 'caly-calendar',
@@ -131,6 +132,10 @@ export class CalyCalendar {
 
     return (
       <div class="grid">
+        <section class="misc">
+          <slot name="misc"></slot>
+        </section>
+
         <section class="navigation">
           <div onClick={() => this.back()} class="button">
             <slot name="back">&lt;</slot>
