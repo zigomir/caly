@@ -73,10 +73,11 @@ Caly, a 6k customizable calendar.
 
 ## Slots
 
-| Slot                                          | Description |
-| --------------------------------------------- | ----------- |
-| `"back – Slot for the previous month button"` |             |
-| `"forward – Slot for the next month button"`  |             |
+| Slot        | Description                                          |
+| ----------- | ---------------------------------------------------- |
+| `"back"`    | Slot for the previous month button                   |
+| `"forward"` | Slot for the next month button                       |
+| `"misc"`    | Slot for the miscellaneous, e.g. date preset buttons |
 
 
 ## CSS Custom Properties

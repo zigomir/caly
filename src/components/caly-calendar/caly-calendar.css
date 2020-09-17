@@ -32,8 +32,9 @@
 .grid {
   display: inline-grid;
   grid-template-areas: var(--grid,
-    "nav nav"
-    "mn  mn"
+    "misc misc"
+    "nav  nav"
+    "mn   mn"
   );
   column-gap: var(--grid-column-gap, 0px);
 }
@@ -41,6 +42,10 @@
 .disabled {
   pointer-events: none;
   color: var(--out-of-range-color, #d3d3d3);
+}
+
+.misc {
+  grid-area: misc;
 }
 
 .navigation {

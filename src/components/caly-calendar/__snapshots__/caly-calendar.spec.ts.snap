@@ -4,6 +4,9 @@ exports[`should render caly-calendar: render-2010-01-01 1`] = `
 <caly-calendar month="1" selected="2010-01-01" year="2010">
   <mock:shadow-root>
     <div class="grid">
+      <section class="misc">
+        <slot name="misc"></slot>
+      </section>
       <section class="navigation">
         <div class="button">
           <slot name="back">
