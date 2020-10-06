@@ -1,7 +1,3 @@
-# caly-calendar
-
-Caly, a 6k customizable calendar.
-
 <!-- Auto Generated Below -->
 
 
