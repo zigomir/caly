@@ -23,7 +23,7 @@
     "@types/jest": "26.0.14",
     "@types/puppeteer": "3.0.2",
     "cntdys": "^0.5.0",
-    "jest": "26.5.0",
+    "jest": "26.5.2",
     "jest-cli": "26.5.0",
     "puppeteer": "5.3.1"
   },
