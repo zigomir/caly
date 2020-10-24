@@ -1,17 +1,25 @@
 {
   "name": "caly",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Caly is a small calendar!",
-  "main": "dist/index.cjs.js",
-  "module": "dist/custom-elements/index.js",
-  "types": "dist/types/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/caly/caly.esm.js",
+  "keywords": [
+    "calendar",
+    "stencil"
+  ],
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/custom-elements/index.js",
+  "types": "./dist/types/index.d.ts",
+  "collection": "./dist/collection/collection-manifest.json",
+  "collection:main": "./dist/collection/index.js",
+  "unpkg": "./dist/caly/caly.esm.js",
   "files": [
     "dist/",
     "loader/"
   ],
+  "exports": {
+    "import": "./dist/custom-elements/index.js",
+    "require": "./dist/index.cjs.js"
+  },
   "scripts": {
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
@@ -19,13 +27,19 @@
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "devDependencies": {
-    "@stencil/core": "^2.0.3",
+    "@stencil/core": "^2.1.1",
     "@types/jest": "26.0.15",
     "@types/puppeteer": "3.0.2",
-    "cntdys": "^0.5.0",
-    "jest": "26.6.0",
-    "jest-cli": "26.6.0",
-    "puppeteer": "5.3.1"
+    "cntdys": "^0.5.1",
+    "jest": "26.6.1",
+    "jest-cli": "26.6.1",
+    "puppeteer": "5.4.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zigomir/caly.git"
+  },
+  "homepage": "https://github.com/zigomir/caly",
+  "author": "Ziga Vidic <ziga@hey.com> (https://ziga.dev/)",
   "license": "MIT"
 }
