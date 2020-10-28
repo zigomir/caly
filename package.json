@@ -33,7 +33,7 @@
     "cntdys": "^0.5.1",
     "jest": "26.6.1",
     "jest-cli": "26.6.1",
-    "puppeteer": "5.4.0"
+    "puppeteer": "5.4.1"
   },
   "repository": {
     "type": "git",
