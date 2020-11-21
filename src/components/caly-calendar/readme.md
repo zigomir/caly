@@ -69,9 +69,9 @@ defineCustomElements()
 | `month`                      | `month`                          | (required) Month (1-12)                                        | `number`                         | `new Date().getMonth() + 1` |
 | `numberOfMonths`             | `number-of-months`               | (optional) Number of months rendered                           | `number`                         | `1`                         |
 | `range`                      | `range`                          | (optional) Range                                               | `boolean`                        | `false`                     |
-| `rangeEnd`                   | `range-end`                      | (optional) Range end (dd-mm-yyyy)                              | `string`                         | `undefined`                 |
-| `rangeStart`                 | `range-start`                    | (optional) Range start (dd-mm-yyyy)                            | `string`                         | `undefined`                 |
-| `selected`                   | `selected`                       | (optional) Selected day (dd-mm-yyyy)                           | `string`                         | `undefined`                 |
+| `rangeEnd`                   | `range-end`                      | (optional) Range end (yyyy-mm-dd)                              | `string`                         | `undefined`                 |
+| `rangeStart`                 | `range-start`                    | (optional) Range start (yyyy-mm-dd)                            | `string`                         | `undefined`                 |
+| `selected`                   | `selected`                       | (optional) Selected day (yyyy-mm-dd)                           | `string`                         | `undefined`                 |
 | `showPreviousNumberOfMonths` | `show-previous-number-of-months` | (optional) Show previous number of months                      | `boolean`                        | `false`                     |
 | `startOfTheWeek`             | `start-of-the-week`              | (optional) Start of the week. 0 for Sunday, 1 for Monday, etc. | `number`                         | `0`                         |
 | `year`                       | `year`                           | (required) Year (YYYY)                                         | `number`                         | `new Date().getFullYear()`  |

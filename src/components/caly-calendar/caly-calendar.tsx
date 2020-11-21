@@ -37,7 +37,7 @@ export class CalyCalendar {
   @Prop({ mutable: true, reflect: true }) year: number = new Date().getFullYear()
   /** (required) Month (1-12) */
   @Prop({ mutable: true, reflect: true }) month: number = new Date().getMonth() + 1
-  /** (optional) Selected day (dd-mm-yyyy) */
+  /** (optional) Selected day (yyyy-mm-dd) */
   @Prop({ mutable: true, reflect: true }) selected: string
   /** (optional) Locale */
   @Prop() locale: string = 'en-US'
@@ -52,9 +52,9 @@ export class CalyCalendar {
 
   /** (optional) Range */
   @Prop() range: boolean = false
-  /** (optional) Range start (dd-mm-yyyy) */
+  /** (optional) Range start (yyyy-mm-dd) */
   @Prop({ mutable: true, reflect: true }) rangeStart: string
-  /** (optional) Range end (dd-mm-yyyy) */
+  /** (optional) Range end (yyyy-mm-dd) */
   @Prop({ mutable: true, reflect: true }) rangeEnd: string
 
   /** (optional) Event to listen for when new day is selected. */

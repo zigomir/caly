@@ -28,15 +28,15 @@ export namespace Components {
          */
         "range": boolean;
         /**
-          * (optional) Range end (dd-mm-yyyy)
+          * (optional) Range end (yyyy-mm-dd)
          */
         "rangeEnd": string;
         /**
-          * (optional) Range start (dd-mm-yyyy)
+          * (optional) Range start (yyyy-mm-dd)
          */
         "rangeStart": string;
         /**
-          * (optional) Selected day (dd-mm-yyyy)
+          * (optional) Selected day (yyyy-mm-dd)
          */
         "selected": string;
         /**
@@ -103,15 +103,15 @@ declare namespace LocalJSX {
          */
         "range"?: boolean;
         /**
-          * (optional) Range end (dd-mm-yyyy)
+          * (optional) Range end (yyyy-mm-dd)
          */
         "rangeEnd"?: string;
         /**
-          * (optional) Range start (dd-mm-yyyy)
+          * (optional) Range start (yyyy-mm-dd)
          */
         "rangeStart"?: string;
         /**
-          * (optional) Selected day (dd-mm-yyyy)
+          * (optional) Selected day (yyyy-mm-dd)
          */
         "selected"?: string;
         /**
