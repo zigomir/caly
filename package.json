@@ -1,6 +1,6 @@
 {
   "name": "caly",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "Caly is a small calendar!",
   "keywords": [
     "calendar",
@@ -16,10 +16,6 @@
     "dist/",
     "loader/"
   ],
-  "exports": {
-    "import": "./dist/caly/caly.esm.js",
-    "require": "./dist/index.cjs.js"
-  },
   "scripts": {
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
